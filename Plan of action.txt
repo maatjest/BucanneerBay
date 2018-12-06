@@ -1,0 +1,34 @@
+2.1	UI Actions
+For our game.html, we have created two almost identical sections. 
+The first one (supposedly on the left side of the screen), displays the board of the player, whilst the second one is the board of the opponent. 
+
+At the beginning of the game, the player can click on all five ships once, after having done so, the picture of the ship will stick to the mouse. 
+The ship can be rotated with right-click, and when hovered over the playing board on the players side, will highlight the different cells which the ship would occupy if placed there (placed with left-click). Players may not place ships directly next to other ships (up down left right from the already placed ship).
+When both players have placed all their boats, the game will move on to the second stage, where one of the players goes first (either decided randomly or otherwise), and can click on one of the cells of the opponent. 
+If there is a part of a boat there, there will be a graphical (and audio) indication of the boat being there. 
+The player cannot can no longer select that cell. 
+After the action, the opponent gets a turn, where the player will receive the same sort of feedback depending on whether a cell with a ship in it is hit. 
+After all of one of the players’ ships have been destroyed, a popup will come up allowing the player to return to the main menu.
+
+2.2	Object design
+Game state:
+-	Phase zero: place ships, ends when both players have placed their ships
+-	Phase one: players select different cells which they wish to reveal, ends when all cells with ships of one of the players have been clicked.
+-	Phase two: the player who won is sent a message that they won (along with some additional statistics). 
+
+Game board:
+The board consists of two grids, both made up of a 2D array.
+The array contains for each coordinate a boolean value, which are initialised at false.
+If a ship is placed on one of the cells of the array, the value is changed to true.
+The values are checked when placing other ships, or when firing on the cells.
+
+ships:
+pirateFlagship x1
+pirateCruiser x1
+pirateFrigate x2
+pirateScout
+
+Game items:
+The ships under the players fields display the state of the ships.
+If the game is in phase zero, the ships will "grey out" when placed
+If the game is in phase one, the ships will "grey out" when completely destroyed
